@@ -15,6 +15,9 @@ header {
     grid-template-rows: auto auto;
     text-align: center;
 }
+h1 {
+    font-size: 36px;
+}
 .name {
     grid-column: 2/4;
     grid-row: 1/2;

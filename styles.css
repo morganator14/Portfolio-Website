@@ -1,6 +1,39 @@
-* {
-    background-color: #f4f1de;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #3d405b;
-    font-size: 16px;
+:root {
+    background-color: #eff1ed;
+    font-family: 'elizeth', serif;
+    color: #1c1c1c;
+    font-size: 12px;
+}
+.container {
+    background-color: #fff;
+    margin: 30px 60px;
+    box-shadow: 0 14px 16px rgba(0, 0, 0, 0.5);
+    padding: 80px;
+}
+.headGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 800px) 1fr 1fr;
+    grid-template-rows: auto;
+}
+hr {
+  grid-column: 1 / -1;
+  margin: 0;
+  border: none;
+}
+.top_hrule {
+  height: 1px;
+  background-color: #1c1c1c;
+  margin-top: 8px;
+}
+.low_hrule {
+  height: 100px;
+  background-color: #1c1c1c;
+}
+h1 {
+  font-size: 80px;
+  grid-column: 1 / -1;
+  margin: 6px 0;
+}
+.headGrid > p {
+    margin: 0;
 }

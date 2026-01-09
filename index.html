@@ -9,16 +9,20 @@
         <script src="https://kit.fontawesome.com/7abb19ceb4.js" crossorigin="anonymous"></script>
     </head>
     <body class="container">
+        <body data-page-title="MORGAN TORONYI">
         <div id="header"></div>
         <script>
             fetch("header.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("header").innerHTML = data;
+            const title = document.body.dataset.pageTitle;
+                if (title) {
+                    document.getElementById("pageTitle").textContent = title;
+                }
             });
         </script>
         <main>
-            <i class="fa-brands fa-instagram"></i>
             <section class="homeGrid">
                 <p class="demoreel">add video</p>
                 <h3 class="highlights">Highlights</h3>

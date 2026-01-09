@@ -34,11 +34,11 @@ h1 {
   grid-column: 1 / -1;
   margin: 6px 0;
 }
+.mobile-nav-wrap {
+    grid-column: 1/ -1;
+}
 .headGrid > p {
   margin: 0;
-}
-a {
-  text-decoration: none;
 }
 #menu-toggle {
   display: none;
@@ -59,22 +59,43 @@ a {
   transition: 0.3s;
 }
 .mobile-nav {
-  max-height: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: max-height 0.3s ease;
+  opacity: 0;
+  transform-origin: top;
+  transform: scaleY(0);
+  display: block;
+    transition:
+    transform 0.35s cubic-bezier(.4,0,.2,1),
+    opacity 0.25s ease;
 }
-#menu-toggle:checked ~ .mobile-nav {
-  max-height: 200px;
+.mobile-nav a{
+    display: inline-block;
+    width: 245px;
+    text-align: center;
+    transform-origin: center;
+    transform: translateY(5px);
+    transition: transform 0.25s ease;
+    color: #1c1c1c;
+}
+.mobile-nav a:hover {
+    transform: scale(1.01);
+    transform-origin: center;
+}
+#menu-toggle:checked ~ .mobile-nav-wrap {
+  height: 30px;
+}
+
+#menu-toggle:checked ~ .mobile-nav-wrap .mobile-nav {
+  transform: scaleY(1);
+  opacity: 1;
 }
 #menu-toggle:checked + .hamburger span:nth-child(1) {
   transform: rotate(45deg) translate(6px, 6px);
 }
+
 #menu-toggle:checked + .hamburger span:nth-child(2) {
   opacity: 0;
 }
+
 #menu-toggle:checked + .hamburger span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -7px);
 }
@@ -82,6 +103,24 @@ a {
     display: inline;
     margin-top: 10px;
 }
-.link {
-    padding-right: 110px;
+a, a:visited, a :active{
+  color: #1c1c1c;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease;
+  transform-origin: left;
+  text-align: left;
+}
+-------------------------------------
+
+.projectGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%; 
+}
+.project {
+    background-color: red;
+    height: 30px;
+    padding: 10px;
 }

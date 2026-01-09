@@ -111,16 +111,15 @@ a, a:visited, a :active{
   transform-origin: left;
   text-align: left;
 }
--------------------------------------
 
 .projectGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 100%; 
+    gap: 40px;
 }
+
 .project {
     background-color: red;
-    height: 30px;
-    padding: 10px;
+    height: 400px;
+    width: 1fr;
 }

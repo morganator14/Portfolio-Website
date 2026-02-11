@@ -9,6 +9,96 @@
     </head>
     <body class="container">
         <div id="header"></div>
+        <div class="college-grid">
+                <section class="college" id="mirror-lake">
+                    <div class="film-video"></div>
+                    <h2>MIRROR LAKE</h2>
+                </section>
+                <section class="college" id="ballerinas">
+                    <div class="film-video"></div>
+                    <h2>BALLERINAS</h2>
+                </section>
+                <section class="college" id="abstraction">
+                    <div class="film-video"></div>
+                    <h2>3D ABSTRACTION</h2>
+                </section>
+                <section class="college" id="portrait1">
+                    <div class="film-video"></div>
+                    <h2>SELF PORTRAIT</h2>
+                </section>
+                <section class="college" id="observations">
+                    <div class="film-video"></div>
+                    <h2>OBSERVATIONS</h2>
+                </section>
+                <section class="college" id="peak">
+                    <div class="film-video"></div>
+                    <h2>PIKES PEAK</h2>
+                </section>
+                <section class="college" id="still">
+                    <div class="film-video"></div>
+                    <h2>STILL LIFE</h2>
+                </section>
+            </div>
+            <div class="investigation-grid">
+                <section class="investigation" id="hyperthymesia">
+                    <div class="film-video"></div>
+                    <h2>HYPERTHYMESIA</h2>
+                </section>
+                <section class="investigation" id="malodor">
+                    <div class="film-video"></div>
+                    <h2>FISH MALODOR SYNDROME</h2>
+                </section>
+                <section class="investigation" id="mirror-touch">
+                    <div class="film-video"></div>
+                    <h2>MIRROR TOUCH SYNESTHESIA</h2>
+                </section>
+                <section class="investigation" id="exploding">
+                    <div class="film-video"></div>
+                    <h2>EXPLODING HEAD SYNDROME</h2>
+                </section>
+                <section class="investigation" id="harlequin">
+                    <div class="film-video"></div>
+                    <h2>HARLEQUIN ICHTHYOSIS</h2>
+                </section>
+                <section class="investigation" id="progeria">
+                    <div class="film-video"></div>
+                    <h2>PROGERIA</h2>
+                </section>
+                <section class="investigation" id="stone-man">
+                    <div class="film-video"></div>
+                    <h2>STONE MAN SYNDROME</h2>
+                </section>
+                <section class="investigation" id="accent">
+                    <div class="film-video"></div>
+                    <h2>FOREIGN ACCENT SYNDROME</h2>
+                </section>
+            </div>
+            <div class="high-school-grid">
+                <section class="high-school" id="michigan">
+                    <div class="film-video"></div>
+                    <h2>LAKE MICHIGAN</h2>
+                </section>
+                <section class="high-school" id="small-study">
+                    <div class="film-video"></div>
+                    <h2>SMALL STUDY</h2>
+                </section>
+                <section class="high-school" id="kindergarten">
+                    <div class="film-video"></div>
+                    <h2>KINDERGARTEN</h2>
+                </section>
+                <section class="high-school" id="fox">
+                    <div class="film-video"></div>
+                    <h2>FOX</h2>
+                </section>
+                <section class="high-school" id="surreal">
+                    <div class="film-video"></div>
+                    <h2>SURREALIST COLLAGE</h2>
+                </section>
+                <section class="high-school" id="rural">
+                    <div class="film-video"></div>
+                    <h2>RURAL</h2>
+                </section>
+            </div>
         <script>
             fetch("header.html")
             .then(response => response.text())
@@ -16,3 +106,23 @@
                 document.getElementById("header").innerHTML = data;
             });
         </script>
+        <script>
+            const art = document.querySelectorAll('.college, .investigation, .high-school');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                entry.target.classList.add('visible'); 
+                observer.unobserve(entry.target); 
+                }
+            });
+            }, {
+            threshold: 0.2
+            });
+
+            art.forEach(project => {
+            observer.observe(project);
+            });
+        </script>
+    </body>
+</html>

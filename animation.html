@@ -9,50 +9,70 @@
     </head>
     <body class="container" data-page-title="3D ANIMATION">
         <div id="header"></div>
-        <script>
+        <main>
+            <div class="projectGrid">
+                <section class="project" id="ladybug">
+                    <div class="project-video"></div>
+                    <h2>OUR LADY'S BEETLE</h2>
+                </section>
+                <section class="project" id="translation">
+                    <div class="project-video"></div>
+                    <h2>TRANSLATION IN TRANSIT</h2>
+                </section>
+                <section class="project" id="friendly">
+                    <div class="project-video"></div>
+                    <h2>NOT SO FRIENDLY SANDS</h2>
+                </section>
+                <section class="project" id="apple">
+                    <div class="project-video"></div>
+                    <h2>ONLY APPLE I SEE</h2>
+                </section>
+                <section class="project" id="pillow">
+                    <div class="project-video"></div>
+                    <h2>PILLOW IN LOVE</h2>
+                </section>
+                <section class="project" id="lava">
+                    <div class="project-video"></div>
+                    <h2>HOT LAVA LOGO</h2>
+                </section>
+                <section class="project" id="fish">
+                    <div class="project-video"></div>
+                    <h2>FLYING FISH</h2>
+                </section>
+                <section class="project" id="firefly">
+                    <div class="project-video"></div>
+                    <h2>FIRE AND FLY</h2>
+                </section>
+                <section class="project" id="nostalgia">
+                    <div class="project-video"></div>
+                    <h2>NOSTALGIA</h2>
+                </section>
+            </div>
+            <script>
             fetch("header.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("header").innerHTML = data;
             });
         </script>
-        <main>
-            <div class="projectGrid">
-                <section class="project" id="ladybug">
+        <script>
+            const projects = document.querySelectorAll('.project');
 
-                    <h3></h3>
-                </section>
-                <section class="project" id="translation">
+            const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                entry.target.classList.add('visible');  // add class when in viewport
+                observer.unobserve(entry.target);       // optional: stop observing once visible
+                }
+            });
+            }, {
+            threshold: 0.1 // 10% of the element is visible
+            });
 
-                    <h3></h3>
-                </section>
-                <section class="project" id="friendly">
-
-                    <h3></h3>
-                </section>
-                <section class="project" id="apple">
-
-                    <h3></h3>
-                </section>
-                <section class="project" id="pillow">
-
-                    <h3></h3>
-                </section>
-                <section class="project" id="lava">
-
-                    <h3></h3>
-                </section>
-                <section class="project" id="fish">
-
-                    <h3></h3>
-                </section>
-                <section class="project" id="firefly">
-
-                    <h3></h3>
-                </section>
-                <section class="project" id="nostalgia">
-
-                    <h3></h3>
-                </section>
-            </div>
+            projects.forEach(project => {
+            observer.observe(project);
+            });
+        </script>
         </main>
+    </body>
+</html>

@@ -9,10 +9,56 @@
     </head>
     <body class="container">
         <div id="header"></div>
-        <script>
+        <div class="film-grid">
+                <section class="film" id="speed">
+                    <div class="film-video"></div>
+                    <h2>MMC SPEED MEET</h2>
+                </section>
+                <section class="film" id="candles">
+                    <div class="film-video"></div>
+                    <h2>ME AND MY CANDLES</h2>
+                </section>
+                <section class="film" id="spotlight">
+                    <div class="film-video"></div>
+                    <h2>PROGRAM MANAGER SPOTLIGHT</h2>
+                </section>
+                <section class="film" id="geek">
+                    <div class="film-video"></div>
+                    <h2>GEEK SERIES</h2>
+                </section>
+                <section class="film" id="denman">
+                    <div class="film-video"></div>
+                    <h2>DENMAN FORUM</h2>
+                </section>
+                <section class="film" id="web">
+                    <div class="film-video"></div>
+                    <h2>WEB EXPLORATION</h2>
+                </section>
+            </div>
+            <script>
             fetch("header.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("header").innerHTML = data;
             });
         </script>
+        <script>
+            const films = document.querySelectorAll('.film');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                entry.target.classList.add('visible'); 
+                observer.unobserve(entry.target); 
+                }
+            });
+            }, {
+            threshold: 0.2
+            });
+
+            films.forEach(project => {
+            observer.observe(project);
+            });
+        </script>
+    </body>
+</html>

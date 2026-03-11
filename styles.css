@@ -335,6 +335,48 @@ a, a:visited, a :active{
   bottom: 40vh;
   left:52vw;
 }
+
+
+
+.animation-title {
+  position: relative;
+  height: 65vh;
+  width: 100%;
+  background-color: var(--green);
+}
+.h1-animation {
+  position: absolute;
+  margin: 0;
+  font-size: 500px;
+  left: 55vw;
+  top: -5vh;
+  color: var(--red);
+}
+.p-animation {
+  position: absolute;
+  bottom: 5vh;
+  left: 10vw;
+  width: 30vw;
+  font-size: 16px;
+  color: black;
+}
+.beetle {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--red);
+}
+.beetle-curve {
+  position: absolute;
+  top: 100vh;
+}
+.lava {
+  position: relative;
+  width: 100%;
+  background-color: var(--red);
+}
+
+
 .footer {
   width: 100%;
   height: 35vh;

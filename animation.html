@@ -9,46 +9,37 @@
     </head>
     <body class="container" data-page-title="3D ANIMATION">
         <div id="header"></div>
-        <main>
-            <div class="projectGrid">
-                <section class="project" id="ladybug">
-                    <div class="project-video"></div>
-                    <h2>OUR LADY'S BEETLE</h2>
-                </section>
-                <section class="project" id="translation">
-                    <div class="project-video"></div>
-                    <h2>TRANSLATION IN TRANSIT</h2>
-                </section>
-                <section class="project" id="friendly">
-                    <div class="project-video"></div>
-                    <h2>NOT SO FRIENDLY SANDS</h2>
-                </section>
-                <section class="project" id="apple">
-                    <div class="project-video"></div>
-                    <h2>ONLY APPLE I SEE</h2>
-                </section>
-                <section class="project" id="pillow">
-                    <div class="project-video"></div>
-                    <h2>PILLOW IN LOVE</h2>
-                </section>
-                <section class="project" id="lava">
-                    <div class="project-video"></div>
-                    <h2>HOT LAVA LOGO</h2>
-                </section>
-                <section class="project" id="fish">
-                    <div class="project-video"></div>
-                    <h2>FLYING FISH</h2>
-                </section>
-                <section class="project" id="firefly">
-                    <div class="project-video"></div>
-                    <h2>FIRE AND FLY</h2>
-                </section>
-                <section class="project" id="nostalgia">
-                    <div class="project-video"></div>
-                    <h2>NOSTALGIA</h2>
-                </section>
-            </div>
-            <script>
+        <main class="container">
+            <section class="animation-title">
+                <h1 class="h1-animation">3D</h1>
+                <p class="p-animation">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Quasi voluptatum quo excepturi molestias? Quidem modi 
+                    dolor adipisci deserunt dolore itaque cum atque vitae 
+                    maxime, culpa porro a eum, quo possimus.</p>
+            </section>
+            <section class="beetle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 3040" class="beetle-curve">
+                    <rect x="0" y="0" width="1440" height="1800" fill="#ffcc99"></rect>
+                    <path fill="#cc3333" 
+                    fill-opacity="1" 
+                    d="M-4,0 C649,26 718,1637 1441,0" />
+                    <path class="changing-path" fill="none"
+                    stroke="#cc3333"
+                    stroke-width="20px"
+                    d="M-5,1 C649,26 625,1836 1441,1" />
+                </svg>
+            </section>
+            <section class="lava">
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 1440 320">
+                <path fill="#0099ff" 
+                fill-opacity="1" 
+                d="M0,128L48,122.7C96,117,192,107,288,117.3C384,128,480,160,576,192C672,224,768,256,864,256C960,256,1056,224,1152,181.3C1248,139,1344,85,1392,58.7L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+                </svg>
+            </section>
+        </main>
+        <footer></footer>
+        <script>
             fetch("header.html")
             .then(response => response.text())
             .then(data => {
@@ -73,6 +64,34 @@
             observer.observe(project);
             });
         </script>
-        </main>
+        <script>
+            const path = document.querySelector('.changing-path');
+            const curveA = "M-5,0 C649,26 625,1836 1441,0"; // your start shape
+            const curveB = "M-5,0 C649,26 462,3027 1441,0"; // your end shape
+
+            // Parse out just the numbers from each path
+            const numsA = curveA.match(/-?\d+\.?\d*/g).map(Number);
+            const numsB = curveB.match(/-?\d+\.?\d*/g).map(Number);
+            const letters = curveA.match(/[A-Za-z]/g); // preserve the command letters
+
+            function interpolate(t) {
+            let i = 0;
+            return curveA.replace(/-?\d+\.?\d*/g, () => {
+                const val = numsA[i] + (numsB[i] - numsA[i]) * t;
+                i++;
+                return val.toFixed(1);
+            });
+            }
+
+            window.addEventListener('scroll', () => {
+            const svg = path.closest('svg');
+            const rect = svg.getBoundingClientRect();
+
+            // t goes from 0 to 1 as the svg scrolls through the viewport
+            const t = Math.min(Math.max(-rect.top / rect.height, 0), 1);
+
+            path.setAttribute('d', interpolate(t));
+            });
+        </script>
     </body>
 </html>

@@ -4,6 +4,9 @@
     color: #270722;
     font-size: 13px;
     padding: 0;
+    --red:#cc3333;
+    --green: #ccffcc;
+    --yellow: #ffcc99;
 }
 body {
   margin: 0;
@@ -18,7 +21,7 @@ h2 {
   z-index: 120;
 }
 .head-grid {
-  background-color:  #ccffcc ;
+  background-color: var(--green) ;
 }
 .header-top{
   display: flex;
@@ -173,13 +176,14 @@ a, a:visited, a :active{
 .bg-logo {
   position: relative;
   z-index: 80;
+  aspect-ratio: 1/1;
 }
 .wrapper {
   position: relative;
 }
 .experience {
   position: relative;
-  margin-top: -15vh;
+  margin-top: 7.5vh;
   margin-bottom: 30vh;
   z-index: 83;
   height: fit-content;
@@ -203,7 +207,7 @@ a, a:visited, a :active{
   width: 300px;
   padding: 20px;
 
-  background: #ccffcc;
+  background: var(--green);
 
   opacity: 0;
   transform: translateX(-20px);
@@ -219,10 +223,10 @@ a, a:visited, a :active{
 }
 .bg-green {
   position: absolute;
-  margin-top: -20vh;
+  margin-top: -10vh;
   width: 100%;
   height: 170%;
-  background-color: #ccffcc;
+  background-color: var(--green);
   opacity: 0.5;
   z-index: 81;
   transform: translateY(100px);
@@ -285,8 +289,9 @@ a, a:visited, a :active{
 }
 .technical-skills {
   position: relative;
+  padding-top: 100px;
   top: 80px;
-  background-color: #ffcc99;
+  background-color: var(--yellow);
   z-index: 93;
 }
 .technical-skills svg {
@@ -301,7 +306,21 @@ a, a:visited, a :active{
   z-index: 100;
   background-color: white;
 }
-
+.book-cover {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--red);
+  z-index: 101;
+  transform-origin: right center;
+  transform: scaleX(1);
+  transition: transform 0.8s cubic-bezier(.22, 1, .36, 1);
+}
+.book-cover.visible {
+  transform: scaleX(0);
+}
 .technical-square {
   position: absolute;
   top: 25vw;
@@ -311,8 +330,13 @@ a, a:visited, a :active{
   background-color: white;
   padding: 30px 60px;
 }
+.fine-art-skills {
+  position: absolute;
+  bottom: 40vh;
+  left:52vw;
+}
 .footer {
   width: 100%;
   height: 35vh;
-  background-color: #ccffcc ;
+  background-color: var(--green) ;
 }

@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="https://use.typekit.net/wvl3ytn.css">
     </head>
-    <body class="container" data-page-title="3D ANIMATION">
+    <body data-page-title="3D ANIMATION">
         <div id="header"></div>
         <main class="container">
             <section class="animation-title">
@@ -18,8 +18,9 @@
                     maxime, culpa porro a eum, quo possimus.</p>
             </section>
             <section class="beetle">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 3040" class="beetle-curve">
-                    <rect x="0" y="0" width="1440" height="1800" fill="#ffcc99"></rect>
+            <div class="red-space"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1400" class="beetle-curve">
+                    <rect x="0" y="0" width="1440" height="1400" fill="#ffcc99"></rect>
                     <path fill="#cc3333" 
                     fill-opacity="1" 
                     d="M-4,0 C649,26 718,1637 1441,0" />
@@ -32,13 +33,16 @@
             <section class="lava">
                 <svg xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 0 1440 320">
-                <path fill="#0099ff" 
+                <path fill="#ffcc99" 
                 fill-opacity="1" 
-                d="M0,128L48,122.7C96,117,192,107,288,117.3C384,128,480,160,576,192C672,224,768,256,864,256C960,256,1056,224,1152,181.3C1248,139,1344,85,1392,58.7L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-                </svg>
+                d="M0,128L48,122.7C96,117,192,107,288,117.3C384,128,480,160,576,192C672,224,768,256,864,256C960,256,1056,224,1152,181.3C1248,139,1344,85,1392,58.7L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>   
+            </svg>
+            <div class="white-space"></div>
             </section>
         </main>
-        <footer></footer>
+        <footer>
+            <div class="footer"></div>
+        </footer>
         <script>
             fetch("header.html")
             .then(response => response.text())
@@ -52,12 +56,12 @@
             const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting){
-                entry.target.classList.add('visible');  // add class when in viewport
-                observer.unobserve(entry.target);       // optional: stop observing once visible
+                entry.target.classList.add('visible'); 
+                observer.unobserve(entry.target);   
                 }
             });
             }, {
-            threshold: 0.1 // 10% of the element is visible
+            threshold: 0.1 
             });
 
             projects.forEach(project => {
@@ -66,13 +70,13 @@
         </script>
         <script>
             const path = document.querySelector('.changing-path');
-            const curveA = "M-5,0 C649,26 625,1836 1441,0"; // your start shape
-            const curveB = "M-5,0 C649,26 462,3027 1441,0"; // your end shape
+            const curveA = "M-5,0 C649,26 625,1836 1441,0"; 
+            const curveB = "M-5,0 C649,26 462,3027 1441,0"; 
 
             // Parse out just the numbers from each path
             const numsA = curveA.match(/-?\d+\.?\d*/g).map(Number);
             const numsB = curveB.match(/-?\d+\.?\d*/g).map(Number);
-            const letters = curveA.match(/[A-Za-z]/g); // preserve the command letters
+            const letters = curveA.match(/[A-Za-z]/g); 
 
             function interpolate(t) {
             let i = 0;
@@ -87,7 +91,6 @@
             const svg = path.closest('svg');
             const rect = svg.getBoundingClientRect();
 
-            // t goes from 0 to 1 as the svg scrolls through the viewport
             const t = Math.min(Math.max(-rect.top / rect.height, 0), 1);
 
             path.setAttribute('d', interpolate(t));
